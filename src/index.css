@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant demonicRed (&:where(.demonicRed, .demonicRed *));
+/* 
+@keyframes shimmer {
+          0% { transform: translateX(-160px); opacity: 0.0; }
+          15% { opacity: 1; }
+          100% { transform: translateX(520px); opacity: 0.0; }
+        } */
+        /* Tailwind arbitrary animation class used above: animate-[shimmer_3.5s_ease-in-out_infinite] */
+        /* .animate-[shimmer_3.5s_ease-in-out_infinite] {
+          animation: shimmer 3.5s ease-in-out infinite;
+        } */
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media not print {
+  [data-color-scheme=dark] {
+    color-scheme: dark;
+  }
+}
+
+/* @layer components {
+  .nav-link {
+    @apply text-xs text-muted transition hover:text-white;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent;
+  }
+} */
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Elms Sans", sans-serif;
+  overflow: hidden;
+}
+/* #root {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Elms Sans", sans-serif;
+  overflow: hidden;
+} */
+
+
+/* 
+.urbanist-<uniquifier> {
+  font-family: "Urbanist", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
+
+:root {
+  /* --primary-bg: oklch(97.5% 0.012 85);  */
+  /* --primary-bg: oklch(0.995 0.035 90); */
+  --primary-bg: white;
+  /* --primary-bg: hsl(40 80% 92%); */
+  /* --secondary-bg: hsl(40 80% 97%); */
+  --secondary-bg: white;
+  --tertiary-bg: white;
+  /* --secondary-bg: hsl(0, 0%, 95%); */
+  --primary-text: black;
+  --secondary-text: hsl(0, 0%, 25%);
+  --primary-border: hsl(0, 0%, 88%);
+  /* --primary-border: hsl(40 80% 80%); */
+  --accent-font: #b91c1c;
+  /* --accent-bg: #ff4500; */
+  --accent-bg: #DC2626;
+  --secondary-accent-bg: #ff6969;
+  /* --secondary-accent-bg: #f245066c; */
+}
+
+
+@media not print {
+  .dark {
+    /* --primary-bg: oklch(0.118 0.062 110); */
+    --primary-bg: black;
+    --secondary-bg: hsl(0, 0%, 5%);
+    --primary-text: white;
+    --secondary-text: hsl(0, 0%, 75%);
+    --primary-border: hsl(0, 0%, 10%);
+    --accent-font: #f87171;
+    --accent-bg: #dc143c;
+    --secondary-accent-bg: #260708;
+  }
+}
+
+/* 
+@media not print {
+  .demonicRed {
+    --accent-font: #67e8f9;
+    0891b2
+    }
+} */

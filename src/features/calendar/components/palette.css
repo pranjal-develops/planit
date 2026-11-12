@@ -1,0 +1,232 @@
+/* ================================================================
+   FullCalendar Monarch Palette
+   ─────────────────────────────────────────────────────────────────
+   HOW IT WORKS
+   • Light tokens are defined on :root (always active).
+   • Dark tokens live inside `.dark` and override the same names.
+   • `.dark` is placed on <html> by Tailwind's class-based dark mode
+     (darkMode: 'class' in tailwind.config).
+   • No `dark:` utility classes are needed in the TSX — just use the
+     var() tokens and they automatically switch with the theme.
+   ================================================================ */
+
+:root {
+
+  /* ── PRIMARY ────────────────────────────────────────────────────
+     Used for:
+       • eventColor default  → color of all calendar events (blocks,
+                               row bars, list dots)
+       • "Add Event" toolbar button background (isPrimary button)
+       • More-link border in narrow/day columns
+     Light: dark olive-gold on white  |  Dark: bright gold on dark  */
+  --fc-monarch-primary: rgb(109 94 15);
+  --fc-monarch-primary-foreground: rgb(255 255 255);
+  /* text on primary bg */
+  --fc-monarch-primary-over: #7a6d2e;
+  /* hover state */
+  --fc-monarch-primary-down: #887d47;
+  /* active/pressed state */
+
+  /* ── SECONDARY ──────────────────────────────────────────────────
+     Used for:
+       • Week-number badge background (the pill in the top-left corner
+         of each week row in timeGrid view)
+       • Inline week-number pill in multiMonth view
+     Semantically this is a "muted accent" — same hue family as
+     primary but inverted lightness for badges/chips.
+     Light: pale gold  |  Dark: deep olive                          */
+  --fc-monarch-secondary: rgb(248 226 135);
+  --fc-monarch-secondary-foreground: rgb(83 70 0);
+  /* text on secondary bg */
+  --fc-monarch-secondary-over: #ead680;
+  /* hover state */
+  --fc-monarch-secondary-down: #ddc979;
+  /* active/pressed state */
+
+  /* ── TERTIARY ───────────────────────────────────────────────────
+     Used for:
+       • "Today" date circle — both in the day-header (month/week view)
+         and the day-cell top-inner number (month view)
+       • "Today" row in list view header
+     Light: forest green  |  Dark: soft sage green                  */
+  --fc-monarch-tertiary: rgb(67 102 78);
+  --fc-monarch-tertiary-foreground: rgb(255 255 255);
+  --fc-monarch-tertiary-over: #55745e;
+  --fc-monarch-tertiary-down: #66836f;
+
+  /* ── CALENDAR CONTENT ───────────────────────────────────────────
+     --fc-monarch-event        → default fill color of every event block/bar
+                                 (overridable per-event via FullCalendar's
+                                  eventColor prop or event object)
+     --fc-monarch-event-contrast → text color drawn on top of an event block
+     --fc-monarch-highlight    → semi-transparent tint painted over a date
+                                 range while dragging to create a new event
+     --fc-monarch-now          → color of the "now" indicator line and dot
+                                 in timeGrid (week/day) views                */
+  --fc-monarch-event: var(--fc-monarch-primary);
+  --fc-monarch-event-contrast: var(--fc-monarch-primary-foreground);
+  --fc-monarch-highlight: #f8e2874d;
+  /* gold tint, 30 % opacity */
+  --fc-monarch-now: rgb(186 26 26);
+
+  /* ── SELECTION / FOCUS CONTROLS ─────────────────────────────────
+     --fc-monarch-selected           → background of the currently selected
+                                       view button (e.g. "Month" active pill)
+                                       and selected event highlight ring
+     --fc-monarch-selected-foreground→ text on the selected pill
+     --fc-monarch-selected-over/down → hover/active states of the selected pill
+     --fc-monarch-outline            → keyboard focus ring color applied to
+                                       every interactive calendar element      */
+  --fc-monarch-selected: rgb(102 94 64);
+  --fc-monarch-selected-foreground: rgb(255 255 255);
+  --fc-monarch-selected-over: #746d52;
+  --fc-monarch-selected-down: #827c63;
+  --fc-monarch-outline: #ffbd66;
+  /* bright gold focus ring */
+
+  /* ── NEUTRAL SURFACES ───────────────────────────────────────────
+     --fc-monarch-background   → base surface color; used as the ring/halo
+                                 behind column events and the touch-resizer dot
+                                 background; also the popover/single-month-
+                                 header background (in some views)
+     --fc-monarch-faint        → very subtle tint on disabled days
+                                 (days outside the current month/range) and
+                                 non-business hours in timeGrid
+     --fc-monarch-muted        → hover background on list events and
+                                 unselected toolbar buttons (first hover level)
+     --fc-monarch-strong       → active/pressed background (slightly darker
+                                 than muted); also the base layer of the
+                                 "more events" overflow pill gradient
+     --fc-monarch-stronger     → middle layer of the overflow pill gradient
+                                 (on hover)
+     --fc-monarch-strongest    → deepest layer of the pill gradient
+                                 (on active/press)
+
+     All faint/muted/strong values use the same base hue with
+     increasing alpha so they work over any background.              */
+  --fc-monarch-background: #ffffff;
+  --fc-monarch-faint: #7c7c671a;
+  /* ~10 % opacity */
+  --fc-monarch-muted: #7c7c6726;
+  /* ~15 % opacity */
+  --fc-monarch-strong: #7c7c674d;
+  /* ~30 % opacity */
+  --fc-monarch-stronger: #7c7c6759;
+  /* ~35 % opacity */
+  --fc-monarch-strongest: #7c7c6766;
+  /* ~40 % opacity */
+
+  /* ── NEUTRAL TEXT ───────────────────────────────────────────────
+     --fc-monarch-foreground       → primary text everywhere (event titles,
+                                     day numbers, toolbar title, time labels)
+     --fc-monarch-faint-foreground → day numbers for "other month" days in
+                                     month view (grayed out dates)
+     --fc-monarch-muted-foreground → weekday abbreviations in day headers,
+                                     toolbar icon buttons at rest               */
+  --fc-monarch-foreground: #0c0c09;
+  --fc-monarch-faint-foreground: #bebebe;
+  --fc-monarch-muted-foreground: #8d8d8d;
+
+  /* ── BORDERS ────────────────────────────────────────────────────
+     --fc-monarch-border        → standard grid lines between day cells,
+                                  lane rows, slot rows, list-day separators,
+                                  multiMonth table body outline, popover border
+     --fc-monarch-strong-border → thicker/more prominent border used on
+                                  "major" time slots (full hours vs half-hours)
+                                  and on day headers with isMajor flag          */
+  --fc-monarch-border: #e0dfdb;
+  --fc-monarch-strong-border: #c5c3bf;
+
+  /* ── POPOVER ────────────────────────────────────────────────────
+     The "+N more" overflow popover that appears when a day cell has
+     more events than can fit.
+     --fc-monarch-popover            → popover panel background
+     --fc-monarch-popover-foreground → text inside the popover                  */
+  --fc-monarch-popover: var(--fc-monarch-background);
+  --fc-monarch-popover-foreground: var(--fc-monarch-foreground);
+}
+
+/* ================================================================
+   DARK MODE
+   Activated when <html> has the `.dark` class (Tailwind class strategy).
+   Every token below overrides its :root counterpart; the variable
+   names are identical so no TSX changes are needed.
+   ================================================================ */
+@media not print {
+  .dark {
+
+    /* ── PRIMARY ────────────────────────────────────────────────────
+       Inverted from light: bright gold text on a dark surface.
+       Used on: event blocks, "Add Event" button, more-link border.   */
+    --fc-monarch-primary: rgb(219 198 110);
+    --fc-monarch-primary-foreground: rgb(58 48 0);
+    --fc-monarch-primary-over: #dfcc7e;
+    --fc-monarch-primary-down: #e2d28d;
+
+    /* ── SECONDARY ──────────────────────────────────────────────────
+       Inverted from light: deep olive bg, pale gold text.
+       Used on: week-number badge, inline week pill.                   */
+    --fc-monarch-secondary: rgb(83 70 0);
+    --fc-monarch-secondary-foreground: rgb(248 226 135);
+    --fc-monarch-secondary-over: #5b4e13;
+    --fc-monarch-secondary-down: #625722;
+
+    /* ── TERTIARY ───────────────────────────────────────────────────
+       Light sage for "today" circle — readable on a very dark surface. */
+    --fc-monarch-tertiary: rgb(169 208 179);
+    --fc-monarch-tertiary-foreground: rgb(20 55 35);
+    --fc-monarch-tertiary-over: #b2d5ba;
+    --fc-monarch-tertiary-down: #bad9c2;
+
+    /* ── CALENDAR CONTENT ───────────────────────────────────────────
+       Highlight uses a deep olive tint (was gold on light).
+       Now-indicator line becomes a soft salmon/coral.                 */
+    --fc-monarch-event: var(--fc-monarch-primary);
+    --fc-monarch-event-contrast: var(--fc-monarch-primary-foreground);
+    --fc-monarch-highlight: #5346004d;
+    /* olive tint, ~30 % opacity */
+    --fc-monarch-now: rgb(255 180 171);
+
+    /* ── SELECTION / FOCUS CONTROLS ─────────────────────────────────
+       Warm parchment selected pill; cream focus ring.                 */
+    --fc-monarch-selected: rgb(209 198 161);
+    --fc-monarch-selected-foreground: rgb(54 48 22);
+    --fc-monarch-selected-over: #d6ccaa;
+    --fc-monarch-selected-down: #dad1b4;
+    --fc-monarch-outline: #ffe6c5;
+    /* cream focus ring */
+
+    /* ── NEUTRAL SURFACES ───────────────────────────────────────────
+       Background matches the app's own dark page bg exactly so
+       transparent calendar cells blend with no visible seam.
+       Strong/stronger/strongest switch to white-based alphas because
+       white overlays look natural on dark surfaces (vs the warm-toned
+       overlays used on light).                                        */
+    --fc-monarch-background: oklch(0.118 0.062 110);
+    /* = app dark bg */
+    --fc-monarch-faint: #7c7c671a;
+    --fc-monarch-muted: #7c7c6726;
+    --fc-monarch-strong: #ffffff1a;
+    /* ~10 % white */
+    --fc-monarch-stronger: #ffffff26;
+    /* ~15 % white */
+    --fc-monarch-strongest: #ffffff33;
+    /* ~20 % white */
+
+    /* ── NEUTRAL TEXT ───────────────────────────────────────────────
+       Slightly warm white for body text; no pure #fff to reduce glare. */
+    --fc-monarch-foreground: #f0ede4;
+    --fc-monarch-faint-foreground: #898989;
+    --fc-monarch-muted-foreground: #b0b0b0;
+
+    /* ── BORDERS ────────────────────────────────────────────────────
+       Subtle dark borders that separate cells without being harsh.    */
+    --fc-monarch-border: #333230;
+    --fc-monarch-strong-border: #56544f;
+
+    /* ── POPOVER ────────────────────────────────────────────────────
+       Slightly lighter than the page bg so the popover lifts visually. */
+    --fc-monarch-popover: oklch(0.15 0.055 110);
+    --fc-monarch-popover-foreground: rgb(232 226 212);
+  }
+}
